@@ -1,16 +1,11 @@
-//==============================================================================
-// I2CBus.h
-//==============================================================================
 /*
-    <description, licence, etc.>
+    AHRS.h
+    Author: Seb Madgwick
 
     Algorithm code adapted from:
     http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
-
-    Date        Author          Notes
-    dd/mm/yyyy  Seb Madgwick    Initial release
 */
-//==============================================================================
+
 #ifndef AHRS_h
 #define AHRS_h
 
@@ -23,7 +18,7 @@ class AHRS {
         float twoKp;            // 2 * proportional gain (Kp)
         float q0, q1, q2, q3;   // quaternion describing Earth relative to sensor
 
-        // Functions
+        // Methods
         AHRS();
         void update(float gx, float gy, float gz, float ax, float ay, float az);
 
@@ -38,6 +33,6 @@ class AHRS {
 #define RadToDeg(radians) (57.29577951308f * radians)
 
 #endif
-//==============================================================================
+
+//------------------------------------------------------------------------------
 // End of file
-//==============================================================================

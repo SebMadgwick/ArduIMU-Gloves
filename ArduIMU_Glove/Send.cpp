@@ -40,7 +40,7 @@ typedef union {
 } IntUnion;
 
 //------------------------------------------------------------------------------
-// Functions - Public
+// Methods
 
 void Send::flexSensorData() {
     char packet[64];
@@ -139,9 +139,6 @@ void Send::miscData(const char* const charArray) {
     Serial.write((uint8_t*)packet, packetLength);
 }
 
-//------------------------------------------------------------------------------
-// Functions - Private
-
 char Send::calcChecksum(const char* const packet, const int packetLength) {
     int i = 0;
     char checksum = 0;
@@ -151,6 +148,5 @@ char Send::calcChecksum(const char* const packet, const int packetLength) {
     return checksum;
 }
 
-//==============================================================================
+//------------------------------------------------------------------------------
 // End of file
-//==============================================================================

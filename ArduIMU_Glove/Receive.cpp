@@ -1,18 +1,7 @@
-//==============================================================================
-// Receive.cpp
-//==============================================================================
 /*
-    <description, licence, etc.>
-
-    Assumes that Serial.begin has already been called.
-
-    Packets include LRC checksum as last byte:
-    http://en.wikipedia.org/wiki/Longitudinal_redundancy_check
-
-    Date            Author            Notes
-    dd/mm/yyyy        Seb Madgwick    Initial release
+    Receive.cpp
+    Author: Seb Madgwick
 */
-//==============================================================================
 
 //------------------------------------------------------------------------------
 // Includes
@@ -36,7 +25,7 @@ char Receive::rxBuf[256];
 unsigned char Receive::rxBufIndex;
 
 //------------------------------------------------------------------------------
-// Functions - Public
+// Methods
 
 void Receive::doTasks() {
     while(Serial.available() > 0) {
@@ -103,9 +92,6 @@ void Receive::doTasks() {
     }
 }
 
-//------------------------------------------------------------------------------
-// Functions - Private
-
 char Receive::calcChecksum(const int packetLength) {
     unsigned char tempRxBufIndex = rxBufIndex - packetLength;
     unsigned char checksum = 0;
@@ -115,6 +101,5 @@ char Receive::calcChecksum(const int packetLength) {
     return checksum;
 }
 
-//==============================================================================
+//------------------------------------------------------------------------------
 // End of file
-//==============================================================================

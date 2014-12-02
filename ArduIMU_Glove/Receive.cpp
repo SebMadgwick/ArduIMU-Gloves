@@ -9,6 +9,7 @@
 #include <Arduino.h>
 #include "I2CBus.h"
 #include "Receive.h"
+#include "VibrationMotor.h"
 
 //------------------------------------------------------------------------------
 // Definitions
@@ -61,7 +62,9 @@ void Receive::doTasks() {
             if ((inSync ? rxBuf[0] : rxBuf[rxBufIndex - VIB_PACKET_LEGNTH]) == 'V') {
                 if (calcChecksum(VIB_PACKET_LEGNTH) == 0) {
                     char value = (unsigned char)rxBuf[rxBufIndex - (VIB_PACKET_LEGNTH - 1)];
-                    // TODO: process data
+                    
+                    VibrationMotor::pulse(value);
+                    
                     rxBufIndex = 0;
                     byteCount = 0;
                     inSync = true;

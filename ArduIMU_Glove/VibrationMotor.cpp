@@ -9,6 +9,8 @@
 #include <Arduino.h>
 #include "VibrationMotor.h"
 
+#define VIBRATION_MOTOR_PIN     10
+
 //------------------------------------------------------------------------------
 // Definitions
 
@@ -19,12 +21,18 @@
 // Methods
 
 void VibrationMotor::init() {
+    
+  pinMode(VIBRATION_MOTOR_PIN,OUTPUT);
+    
 }
 
 void VibrationMotor::doTasks() {
 }
 
 void VibrationMotor::pulse(const char num) {
+    
+  analogWrite(VIBRATION_MOTOR_PIN,num);
+    
 }
 
 //------------------------------------------------------------------------------
